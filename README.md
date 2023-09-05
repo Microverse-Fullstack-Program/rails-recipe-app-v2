@@ -14,6 +14,7 @@
     - [Run tests](#run-tests)
   - [👥 Authors ](#-authors-)
     - [👤 **Chere Lemma Urgaya**](#-chere-lemma-urgaya)
+    - [👤 **Henry Omondi**](#👤-henry-omondi)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
   - [⭐️ Show your support ](#️-show-your-support-)
@@ -106,6 +107,12 @@ cd 'project name'
 - GitHub: [@cherelemma](https://github.com/cherelemma)
 - LinkedIn: [@chere-lemma27211613](https://www.linkedin.com/in/chere-lemma-urgaya)
 - Twitter: [@twitterhandle](https://twitter.com/Chere21271613)
+
+### 👤 **Henry Omondi**
+
+- GitHub: [@Henry](https://github.com/Odongo006)
+- LinkedIn: [@Henry](https://www.linkedin.com/in/henry-odongo/)
+- Twitter: [@twitterhandle](https://twitter.com/HenryOdongo007)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
