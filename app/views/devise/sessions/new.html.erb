@@ -17,6 +17,10 @@
                 <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class:"form-control" %>
               </div>
 
+              <% if alert %>
+                <p class="alert-danger p-2"><%= alert %></p>
+              <% end %>
+
               <div class="row mb-4">
                 <% if devise_mapping.rememberable? %>
                   <div class="col d-flex justify-content-center">
