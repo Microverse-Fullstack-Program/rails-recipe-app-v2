@@ -71,6 +71,6 @@ group :test do
   gem 'webdrivers'
 end
 
-gem "devise", "~> 4.9"
+gem 'devise', '~> 4.9'
 
-gem "bootstrap", "~> 5.1.3"
+gem 'bootstrap', '~> 5.1.3'
