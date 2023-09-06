@@ -1,1 +1,16 @@
-<h1> Here is list of all recipes </h1>
+<h1> List of all recipes </h1>
+
+<ul>
+<% @recipes.each do |recipe| %>
+<div class ="recipe-wrapper">
+<div class = "recipe-list">
+<li class = "recipe-title">
+ <a href="/recipes/<%= recipe.id %>"><%=recipe.name%></a>
+</li>
+<%= button_to 'Remove', recipe_path(recipe), class: "remove-cmt-btn", method: :delete %>
+</div>
+<li class = "recipe-description"><%=recipe.description%></li>
+</div>
+<% end %>
+</ul>
+
