@@ -15,7 +15,7 @@ class InventoriesController < ApplicationController
   def create
     @inventory = Inventory.new(inventory_params)
     @inventory.user_id = current_user.id
-    
+
     respond_to do |format|
       if @inventory.save
         format.html { redirect_to inventories_path, notice: 'Inventory was successfully created.' }
@@ -32,7 +32,7 @@ class InventoriesController < ApplicationController
 
   def destroy
     @inventory = Inventory.find(params[:id])
-    
+
     respond_to do |format|
       if can? :destroy, @inventory
         @inventory.destroy
