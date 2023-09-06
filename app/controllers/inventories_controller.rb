@@ -3,7 +3,7 @@ class InventoriesController < ApplicationController
 
   def index
     @inventories = current_user.inventories.includes(:inventory_foods)
-    flash.delete(:notice)
+    flash.delete(:notice) unless request.referrer == new_inventory_url
   end
 
   def show; end
