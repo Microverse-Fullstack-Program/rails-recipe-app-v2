@@ -53,11 +53,13 @@ class FoodsController < ApplicationController
   # DELETE /foods/1 or /foods/1.json
   def destroy
     respond_to do |format|
-      if !@food.inventory_foods.any? && !@food.recipe_foods.any? && @food.destroy
+      if @food.inventory_foods.none? && @food.recipe_foods.none? && @food.destroy
         format.html { redirect_to foods_path, notice: 'Food was successfully destroyed.' }
         format.json { head :no_content }
       else
-        format.html { redirect_to foods_path, alert: 'The food was added to either recipe or inventory and could not be destroyed.' }
+        format.html do
+          redirect_to foods_path, alert: 'The food was added to either recipe or inventory and could not be destroyed.'
+        end
         format.json { render json: @food.errors, status: :unprocessable_entity }
       end
     end
