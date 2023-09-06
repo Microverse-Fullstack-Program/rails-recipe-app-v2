@@ -1,0 +1,34 @@
+<h1> Here is a list of specific recipe </h1>
+<h2><%=@recipe.name%></h2>
+<ul class ="recipe-container">
+<div class ="spec-recipe-wrapper">
+<div class = "recipe-duration">
+<li>Peparation Time: <%=@recipe.preparation_time%></li>
+
+<li>Cooking Time: <%=@recipe.cooking_time%></li>
+
+</div>
+<div class="label-container">
+<label class="switch"> 
+  <div >
+  <p class ="public">Public:</p>
+   </div>
+   <div>
+  <%= form_for @recipe, url: recipe_path(@recipe), method: :patch do |f| %>
+    <%= f.check_box :public, {}, true, false %>
+    <span class="slider"></span>
+  <% end %>
+  </div>
+</label>
+</div>
+</div>
+<p>Steps goes here...</p>
+<div class = "row-4">
+<%= button_to 'Generate shopping list', recipe_path(@recipe), class: "remove-cmt-btn", remote: true  %>
+
+<%= button_to 'Add ingredient', recipe_path(@recipe), class: "remove-cmt-btn", remote: false %>
+</div>
+</ul>
+
+
+
