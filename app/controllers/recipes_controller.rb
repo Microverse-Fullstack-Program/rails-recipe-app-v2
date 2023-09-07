@@ -1,10 +1,13 @@
 class RecipesController < ApplicationController
+  load_and_authorize_resource
+
   def index
-    @recipes = current_user.recipes
+    @recipes = current_user.recipes.includes(:recipe_foods)
+    flash.delete(:notice) unless request.referrer == new_recipe_url
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
+    @recipe = current_user.recipes.find(params[:id])
   end
 
   def new
@@ -13,36 +16,41 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.user = current_user
-    if @recipe.save
-      redirect_to @recipe, notice: 'Recipe was successfully created.'
-    else
-      puts @recipe.errors.full_messages
-      render :new
+    @recipe.user_id = current_user.id
+    @recipe.public = params[:public] == 'Public'
+
+    respond_to do |format|
+      if @recipe.save
+        format.html { redirect_to recipes_path, notice: 'Recipe was successfully created.' }
+        format.json { render :show, status: :created, location: @recipe }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @recipe.errors, status: unprocessable_entity }
+      end
     end
   end
 
-  def update
-    @recipe = Recipe.find(params[:id])
-    if @recipe.update(recipe_params)
-      redirect_to @recipe, notice: 'Recipe was successfully updated.'
-    else
-      render :edit
-    end
-  end
+  def edit; end
+  def update; end
 
   def destroy
     @recipe = Recipe.find(params[:id])
-    if @recipe.destroy
-      flash[:notice] = 'Recipe deleted!'
-    else
-      flash[:alert] = 'Error! Please try again later.'
+
+    respond_to do |format|
+      if can? :destroy, @recipe
+        @recipe.destroy
+        format.html { redirect_to recipes_path, notice: 'Recipe was successfully deleted.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to recipes_path, alert: 'Recipe was not deleted.' }
+        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, :preparation_time, :cooking_time, :public)
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
 end

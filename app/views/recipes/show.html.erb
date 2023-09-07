@@ -1,34 +1,68 @@
-<h1> Here is a list of specific recipe </h1>
-<h2><%=@recipe.name%></h2>
-<ul class ="recipe-container">
-<div class ="spec-recipe-wrapper">
-<div class = "recipe-duration">
-<li>Peparation Time: <%=@recipe.preparation_time%></li>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6 mt-4 p-2">
+      <h1 class="text-center">
+        <%= @recipe.name %>
+      </h1>
+  
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <span>Preparation Time: <%= @recipe.preparation_time %></span>
+        <div class="form-check form-switch form-check-reverse">
+          <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse">
+          <label class="form-check-label" for="flexSwitchCheckReverse">Public</label>
+        </div>
+      </div>
 
-<li>Cooking Time: <%=@recipe.cooking_time%></li>
+      <span class="d-block mb-3">Cooking Time: <%= @recipe.cooking_time %></span>
+      <span class="steps">Steps goes here...</span>
 
-</div>
-<div class="label-container">
-<label class="switch"> 
-  <div >
-  <p class ="public">Public:</p>
-   </div>
-   <div>
-  <%= form_for @recipe, url: recipe_path(@recipe), method: :patch do |f| %>
-    <%= f.check_box :public, {}, true, false %>
-    <span class="slider"></span>
-  <% end %>
+      <div class="d-flex justify-content-between align-items-center mt-3">
+        <div class="add-btn">
+          <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-secondary">
+            Generate shopping list
+          </button>
+        </div>
+
+        <div class="add-btn">
+          <%= link_to 'Add ingredient', new_recipe_recipe_food_path(recipe_id: @recipe.id), class: 'btn btn-primary' %>
+        </div>
+      </div>
+    <hr/>
+
+    <% if @recipe.recipe_foods.empty? %>
+      <p class="no-record text-center">
+        No food ingredient added to this recipe yet.
+      </p>
+    <% else %>
+			<table class="table table-striped table-bordered">
+				<% if @recipe.recipe_foods.any? %>
+					<thead>
+						<tr>
+						<th scope="col">#</th>
+							<th scope="col">Food</th>
+							<th scope="col">Quantity</th>
+							<th scope="col">Value</th>
+							<th scope="col" class="food-action">Actions</th>
+						</tr>
+					</thead>
+					<tbody>
+					<% @recipe.recipe_foods.each_with_index do |food_recipe, index| %>
+						<tr>
+							<td><%= index + 1 %></td>										
+							<td><%=food_recipe.food.name %></td>
+							<td><%=food_recipe.quantity %></td>
+							<td><%=food_recipe.quantity * food_recipe.food.price %></td>
+							<td class="d-flex">
+								<%= link_to 'Modify', edit_recipe_recipe_food_path(@recipe, food_recipe), class: 'btn btn-danger btn-sm' %>
+								<%= form_with(url: recipe_recipe_food_path(@recipe, food_recipe), method: :delete, data: { confirm: 'Are you sure?' }) do |f| %>
+									<%= f.submit 'Remove', class: 'btn btn-danger btn-sm' %>
+								<% end %>
+							</td>
+						</tr>
+					<% end %>
+					</tbody>
+				<% end %>
+			</table>
+	  <% end %>
   </div>
-</label>
 </div>
-</div>
-<p>Steps goes here...</p>
-<div class = "row-4">
-<%= button_to 'Generate shopping list', recipe_path(@recipe), class: "remove-cmt-btn", remote: true  %>
-
-<%= button_to 'Add ingredient', recipe_path(@recipe), class: "remove-cmt-btn", remote: false %>
-</div>
-</ul>
-
-
-
