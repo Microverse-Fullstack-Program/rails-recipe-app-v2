@@ -1,9 +1,7 @@
 .switch {
   position: relative;
-  display: flex; /* Use flexbox */
+  display: flex;
   justify-content: space-around;
-  // align-items: center;
-  // display: inline-block;
   width: 50px;
   height: 24px;
 }
@@ -25,7 +23,7 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   border-radius: 34px;
-  z-index: 1; /* Ensure the button is above other elements */
+  z-index: 1;
 }
 
 .slider::before {
@@ -39,14 +37,13 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   border-radius: 50%;
-  z-index: 2; /* Ensure the button is above other elements */
+  z-index: 2;
 }
 
-/* Adjust the label position */
 .public {
   position: relative;
-  z-index: 3; /* Ensure the label is above other elements */
-  margin-right: 10rem; /* Add spacing between label and button */
+  z-index: 3;
+  margin-right: 10rem;
 }
 
 input:checked + .slider {
@@ -129,4 +126,17 @@ a {
 .form-wrapper {
   display: flex;
   justify-content: center;
+}
+
+.modal-title {
+  display: block;
+}
+
+.modal-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-wrapper {
+  padding-top: 15rem;
 }
