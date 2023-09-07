@@ -2,22 +2,22 @@
 <div class="modal fade modal-wrapper" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header modal-title">
-        <h5 class="modal-title text-center" id="exampleModalLabel">Generate Shopping List</h5>
+      <div class="modal-header">
+        <h5 class="modal-title">Generate Shopping List</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <h5 class="modal-title ms-4">Choose an inventory to use</h5>
-      <div class="modal-body modal-container">
-        <div class="form-group">
-        <select class="form-select" id="shopping-list" data-style="btn-primary">
-            <option disabled selected>... Select inventory ... </option>
-            <option value="item1">Inventory 1</option>
-            <option value="item2">Inventory 2</option>
-            <option value="item3">Inventory 3</option>
-        </select>
-        </div>
-          <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="generate-button">Generate</button>
+      <h5 class="modal-title text-center ms-4 mt-2">Choose an inventory to use</h5>
+      <div class="modal-body">
+        <div class="m-2">
+            <%= form_with(url: shopping_list_path, method: :get, class: 'd-flex justify-content-between') do |f| %>
+              <%= f.hidden_field :recipe_id, value: @recipe.id %>
+              <%= f.collection_select :inventory_id, @inventories, :id, :name, { prompt: '.. Select Inventory ..' }, id: 'inventory-select' %>
+              <%= f.submit 'Generate', class: 'btn btn-dark' %>
+            <% end %>
+        </div>   
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">Cancel</button>
       </div>
     </div>
   </div>

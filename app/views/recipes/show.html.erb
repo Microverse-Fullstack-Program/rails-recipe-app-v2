@@ -8,7 +8,11 @@
       <div class="d-flex justify-content-between align-items-center mb-3">
         <span>Preparation Time: <%= @recipe.preparation_time %></span>
         <div class="form-check form-switch form-check-reverse">
-          <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse">
+          <% if @recipe.public %> 
+            <input class="form-check-input" type="checkbox" checked id="flexSwitchCheckReverse" checked>
+          <% else %>
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse">
+          <% end %>
           <label class="form-check-label" for="flexSwitchCheckReverse">Public</label>
         </div>
       </div>
