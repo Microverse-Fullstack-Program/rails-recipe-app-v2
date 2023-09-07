@@ -26,7 +26,7 @@
 
           <li class="nav-item">
             <% if current_page?(recipes_path) %>
-              <%= link_to "Create new Recipe", new_recipe_path, class: "nav-link" %>
+              <%= link_to "New Recipe", new_recipe_path, class: "nav-link" %>
             <% else %>
               <%= link_to "Recipes", recipes_path, class: "nav-link" %>
             <% end %>
