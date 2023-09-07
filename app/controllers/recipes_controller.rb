@@ -7,7 +7,10 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = current_user.recipes.find(params[:id])
+    Recipe.includes(:recipe_foods).find(params[:id])
+    @inventories = Inventory.all
+
+    render :show
   end
 
   def new
@@ -46,6 +49,25 @@ class RecipesController < ApplicationController
         format.json { render json: @recipe.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def shopping_list
+    @recipe = Recipe.find(params[:recipe_id])
+    @inventory = Inventory.find(params[:inventory_id])
+    recipe_foods = @recipe.recipe_foods.includes(:food)
+    inventory_foods = @inventory.inventory_foods.includes(:food)
+
+    recipe_foods.each do |recipe_food|
+      inventory_food = inventory_foods.find_by(food_id: recipe_food.food_id)
+      if inventory_food
+        inventory_food.quantity += recipe_food.quantity
+        inventory_food.save
+      else
+        @inventory.inventory_foods.create(food_id: recipe_food.food_id, quantity: recipe_food.quantity)
+      end
+    end
+
+    redirect_to recipe_path(@recipe)
   end
 
   private
