@@ -70,3 +70,9 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+gem 'devise', '~> 4.9'
+
+gem 'bootstrap', '~> 5.1.3'
+
+gem 'cancancan', '~> 3.5'
