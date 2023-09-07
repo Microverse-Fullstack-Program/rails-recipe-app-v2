@@ -22,10 +22,14 @@
             Generate shopping list
           </button>
         </div>
-            <%= render partial: 'shared/modal_structure' %>
+        <%= render partial: 'shared/modal_structure' %>
+       
         <div class="add-btn">
-          <%= link_to 'Add ingredient', new_recipe_recipe_food_path(recipe_id: @recipe.id), class: 'btn btn-primary' %>
-        </div>
+
+         <%= link_to 'Add ingredient', new_recipe_recipe_food_path(recipe_id: @recipe.id), class: 'btn btn-primary' %>
+       
+          </div>
+
       </div>
     <hr/>
 
@@ -51,7 +55,13 @@
 							<td><%= index + 1 %></td>										
 							<td><%=food_recipe.food.name %></td>
 							<td><%=food_recipe.quantity %></td>
-							<td><%=food_recipe.quantity * food_recipe.food.price %></td>
+						<td>
+                            <% if food_recipe.quantity.present? && food_recipe.food.price.present? %>
+                                <%= food_recipe.quantity * food_recipe.food.price %>
+                            <% else %>
+                                N/A
+                            <% end %>
+                            </td>>
 							<td class="d-flex">
 								<%= link_to 'Modify', edit_recipe_recipe_food_path(@recipe, food_recipe), class: 'btn btn-danger btn-sm' %>
 								<%= form_with(url: recipe_recipe_food_path(@recipe, food_recipe), method: :delete, data: { confirm: 'Are you sure?' }) do |f| %>
