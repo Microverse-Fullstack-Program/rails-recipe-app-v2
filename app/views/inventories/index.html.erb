@@ -1,0 +1,39 @@
+<div class="container"
+  <div class="row">
+    <div class="col-md-12">
+
+    <div class="d-flex justify-content-end mt-2 mb-2 p-2">
+      <%= link_to 'New Inventory', new_inventory_path, class: "btn btn-primary text-right" %>
+    </div>
+
+      <% if notice && notice != "Signed in successfully."%>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+
+      <% if alert %>
+        <p class="alert alert-danger">
+          <%= alert %>
+        </p>
+      <% elsif @inventories.empty? %>
+        <p class="alert alert-info">
+          No inventories added yet. Please add new inventory.
+        </p>
+      <% else %>
+        <h1 class="text-center">Inventories List</h1>
+        <% @inventories.each do |inventory| %>
+          <div class="row border mb-4">
+            <div class="col-4 p-2 text-start">
+              <%= link_to inventory.name, inventory_path(inventory), class: 'nav-link mb-3 fs-4 link-dark'%>
+              <% if can? :destroy, inventory %>
+                <%= button_to "Remove", inventory_path(inventory), method: :delete, data: { confirm: "Are you sure you want to delete this inventory?" }, class: 'btn btn-danger mx-3 fs-5 p-1 custom-button-width' %>
+              <% end %>
+              </div>
+            <div class="col p-2 text-start">
+              <p><%= inventory.description %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

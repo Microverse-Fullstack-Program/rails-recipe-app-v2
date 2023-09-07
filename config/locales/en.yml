@@ -30,4 +30,33 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            name:
+              blank: "User name can't be blank"
+              too_short: "User name is too short (minimum is 3 characters)"
+              too_long: "User name is too long (maximum is 20 characters)"
+              taken: "User name already exists"
+            email:
+              blank: "Email can't be blank"
+              taken: "Email already exists"
+            password:
+              blank: "Password can't be blank"
+              too_short: "Password is too short (minimum is 6 characters)"
+            password_confirmation:
+              blank: "Password confirmation can't be blank"
+              not_match: "Password confirmation doesn't match Password"
+        inventory:
+          attributes:
+            name:
+              blank: "Inventory name can't be blank"
+              too_short: "Inventory name is too short (minimum is 3 characters)"
+              too_long: "Inventory name is too long (maximum is 20 characters)"
+              taken: "Inventory name already exists"
+            description:
+              blank: "Description can't be blank"
+              too_short: "Description is too short (minimum is 3 characters)"
+              too_long: "Description is too long (maximum is 500 characters)"
