@@ -28,7 +28,7 @@
     <%= form.number_field :preparation_time,
         autofocus: true,
         autocomplete: 'preparation_time',
-        placeholder: 'Preparation time in minutes',
+        placeholder: 'Preparation time in hour(s)',
         class: 'form-control'
     %>
     <% if @recipe.errors.any? %>
@@ -42,7 +42,7 @@
     <%= form.number_field :cooking_time,
         autofocus: true,
         autocomplete: 'cooking_time',
-        placeholder: 'Cooking time in minutes',
+        placeholder: 'Cooking time in hour(s)',
         class: 'form-control'
     %>
     <% if @recipe.errors.any? %>
