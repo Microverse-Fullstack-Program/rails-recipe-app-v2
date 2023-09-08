@@ -77,6 +77,8 @@ en:
             cooking_time:
               blank: "Cooking time can't be blank"
               too_short: "Cooking time is too short (minimum is 1 minute)"
+            public:
+              blank: "Public can't be blank"
         food:
           attributes:
             name:
@@ -97,4 +99,16 @@ en:
             inventory_id:
               blank: "Inventory can't be blank"
             food_id:
-              blank: "Food is not selected"           
+              blank: "Food is not selected"
+              taken: "Food already exists in this inventory"
+        recipe_food:
+          attributes:
+            quantity:
+              blank: "Quantity can't be blank"
+              too_short: "Quantity is too small (minimum is 1)"
+            recipe_id:
+              blank: "Recipe can't be blank"
+            food_id:
+              blank: "Food is not selected"
+              taken: "Food already exists in this recipe"
+                
