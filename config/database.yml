@@ -18,7 +18,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   username: postgres
-  password: nhanha94
+  password: postgres#13579
   
 
   # For details on connection pooling, see Rails configuration guide
@@ -29,7 +29,7 @@ development:
   <<: *default
   database: Recipe_App_development
   username: postgres
-  password: nhanha94
+  password: postgres#13579
   
 
   # The specified database role being used to connect to postgres.
@@ -75,7 +75,7 @@ test:
   <<: *default
   database: Recipe_App_test
   username: postgres
-  password: nhanha94
+  password: postgres#13579
   
 
 # As with config/credentials.yml, you never want to store sensitive information,
