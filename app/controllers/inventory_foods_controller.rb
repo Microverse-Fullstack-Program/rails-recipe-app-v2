@@ -52,7 +52,7 @@ class InventoryFoodsController < ApplicationController
     id = @inventory_food.inventory_id
 
     respond_to do |format|
-      if can? :destroy, @inventory_food[inventory_id: id]
+      if can? :destroy, Inventory.includes(:inventory_foods).find(id)
         @inventory_food.destroy
         format.html { redirect_to inventory_path(id), notice: 'Food was successfully removed.' }
         format.json { head :no_content }
