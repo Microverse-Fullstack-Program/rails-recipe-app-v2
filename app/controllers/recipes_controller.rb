@@ -1,9 +1,10 @@
 class RecipesController < ApplicationController
   load_and_authorize_resource
+  include ApplicationHelper
 
   def index
+    notice_message
     @recipes = current_user.recipes.includes(:recipe_foods)
-    flash.delete(:notice) unless request.referrer == new_recipe_url
   end
 
   def show

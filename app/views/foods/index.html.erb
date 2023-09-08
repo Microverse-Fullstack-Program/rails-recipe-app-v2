@@ -2,11 +2,9 @@
   <div class="row">
     <div class="col-md-12">
 
-      <h1 class="text-center mt-4">
-        <%= @inventory.name %>
-      </h1>
+      <h1 class="text-center mt-4">Foods List</h1>
       <div class="d-flex justify-content-end">
-        <%= link_to 'Add Food', new_inventory_inventory_food_path(@inventory), class: "btn btn-primary" %>
+        <%= link_to 'New Food', new_food_path, class: "btn btn-primary" %>
       </div>
 
       <% if notice %>
@@ -19,7 +17,7 @@
         </p>
       <% elsif @foods.empty? %>
         <p class="alert alert-info">
-        There are no foods in the database for this inventory. Please add food to the inventory.
+        There are no foods in the database for the user. Please add new inventory.
         </p>
       <% end %>
 
@@ -30,7 +28,8 @@
             <tr>
               <th>#</th>
               <th>Food</th>
-              <th>Quantity</th>
+              <th>Measurement Unit</th>
+              <th>Unit Price</th>
               <th class="text-center">Action</th>
             </tr>
           </thead>
@@ -39,10 +38,11 @@
               <tr>
                 <td><%= index + 1 %></td>
                 <td><%= food.name %></td>
-                <td><%= "#{food.quantity} #{food.measurement_unit}" %></td>
-                <td class="text-center" >
-                  <span> <%= button_to "Remove", inventory_inventory_food_path(@inventory.id, food.id), class: "btn btn-danger", method: :delete, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } %></span>
-                </td>
+                <td><%= food.measurement_unit %></td>
+                <td><%= food.price %></td>
+                <td class="d-flex justify-content-center justify-content-around" >
+                  <span> <%= link_to "Modify", edit_food_path(food), class: "btn btn-danger"%> </span>
+                  <span> <%= button_to "Remove", food_path(food), class: "btn btn-danger", method: :delete, data: { "turbo-method": :delete, turbo_confirm: "Are you sure?" } %></span>                </td>
               </tr>
             <% end %>
           </tbody>
