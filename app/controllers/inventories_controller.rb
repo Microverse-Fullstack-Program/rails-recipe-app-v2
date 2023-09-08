@@ -10,8 +10,7 @@ class InventoriesController < ApplicationController
 
   def show
     @inventory = Inventory.find(params[:id])
-    @foods = Food.joins(:inventory_foods).where(inventory_foods: { inventory_id: @inventory.id })
-      .select('foods.*, inventory_foods.*')
+    @foods = Food.joins(:inventory_foods).where(inventory_foods: { inventory_id: @inventory.id }).select('foods.*, inventory_foods.*')
   end
 
   def new
