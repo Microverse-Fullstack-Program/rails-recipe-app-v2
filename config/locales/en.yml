@@ -77,4 +77,24 @@ en:
             cooking_time:
               blank: "Cooking time can't be blank"
               too_short: "Cooking time is too short (minimum is 1 minute)"
-  
+        food:
+          attributes:
+            name:
+              blank: "Food name can't be blank"
+              too_short: "Food name is too short (minimum is 3 characters)"
+              too_long: "Food name is too long (maximum is 50 characters)"
+              taken: "Food name already exists"
+            measurement_unit:
+              blank: "Measurement unit can't be blank"
+            price:
+              blank: "Price can't be blank"
+              too_short: "Price is too small (minimum is 1 cent)"
+        inventory_food:
+          attributes:
+            quantity:
+              blank: "Quantity can't be blank"
+              too_short: "Quantity is too small (minimum is 1)"
+            inventory_id:
+              blank: "Inventory can't be blank"
+            food_id:
+              blank: "Food is not selected"           

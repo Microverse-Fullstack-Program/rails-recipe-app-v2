@@ -1,12 +1,18 @@
 class InventoriesController < ApplicationController
   load_and_authorize_resource
 
+  include ApplicationHelper
+
   def index
+    notice_message
     @inventories = current_user.inventories.includes(:inventory_foods)
-    flash.delete(:notice) unless request.referrer == new_inventory_url
   end
 
-  def show; end
+  def show
+    @inventory = Inventory.find(params[:id])
+    @foods = Food.joins(:inventory_foods).where(inventory_foods: { inventory_id: @inventory.id })
+      .select('foods.*, inventory_foods.*')
+  end
 
   def new
     @inventory = Inventory.new
