@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :inventories do
-    resources :inventory_foods, only: %i[new create destroy]
+    resources :inventory_foods, only: [:show, :new, :create, :destroy]
   end
 
   resources :recipes, only: [:index, :show, :new, :update, :destroy, :create] do
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :foods do
-    resources :recipe_foods, only: %i[new create destroy]
+    resources :recipe_foods, only: %i[edit, update, new create destroy]
   end
 
   get 'shopping_list', to: 'recipes#shopping_list', as: 'shopping_list'
