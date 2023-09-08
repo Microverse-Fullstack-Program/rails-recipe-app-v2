@@ -1,0 +1,29 @@
+<h1>Form to add ingredient</h1>
+<div class="container d-flex justify-content-center align-items-center ">
+  <div class="text-center">
+    <%= form_with(model: @recipe_food, url: recipe_recipe_food_path, local: true) do |form| %>
+    
+    <div class="form-group mt-3 form-control-lg">
+      <%= form.collection_select :food_id, Food.all, :id, :name, prompt: "Select Food"%>
+    </div>
+    
+    <div class="mt-3 p-4">
+      <%= form.number_field :quantity,
+        autofocus: true,
+        autocomplete: 'quantity',
+        placeholder: 'Quantity in grams',
+        class: 'form-control'
+      %>
+      <% if @recipe_food.errors.any? %>
+      <p class="text-danger mb-0">
+        <%= @recipe_food.errors[:quantity].first %>
+      </p>
+      <% end %>
+    </div>
+    
+    <div class="actions text-center add-btn">
+      <%= form.submit class: 'btn btn-sm mt-4 btn-primary ' %>
+    </div>
+    <% end %>
+  </div>
+</div>
