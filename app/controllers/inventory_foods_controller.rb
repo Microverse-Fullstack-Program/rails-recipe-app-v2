@@ -32,7 +32,7 @@ class InventoryFoodsController < ApplicationController
     id = @inventory_food.inventory_id
 
     respond_to do |format|
-      if can? :update, @inventory_food[:inventory_id => id]
+      if can? :update, @inventory_food[inventory_id: id]
         if @inventory_food.update(inventory_food_params)
           format.html { redirect_to inventory_path(id), notice: 'Food was successfully updated.' }
           format.json { render :show, status: :ok, location: @inventory_food }
@@ -52,7 +52,7 @@ class InventoryFoodsController < ApplicationController
     id = @inventory_food.inventory_id
 
     respond_to do |format|
-      if can? :destroy, @inventory_food[:inventory_id => id]
+      if can? :destroy, @inventory_food[inventory_id: id]
         @inventory_food.destroy
         format.html { redirect_to inventory_path(id), notice: 'Food was successfully removed.' }
         format.json { head :no_content }

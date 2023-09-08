@@ -54,7 +54,6 @@ class FoodsController < ApplicationController
 
   # DELETE /foods/1 or /foods/1.json
   def destroy
-    
     respond_to do |format|
       if @food.inventory_foods.none? && @food.recipe_foods.none? && @food.destroy
         format.html { redirect_to foods_path, notice: 'Food was successfully destroyed.' }
