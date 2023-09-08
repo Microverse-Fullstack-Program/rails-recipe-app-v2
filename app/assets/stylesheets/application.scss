@@ -17,13 +17,14 @@ h1 {
   font-size: 1.75rem;
   font-weight: 500;
   line-height: 1.2;
-  margin-bottom: 1.5rem;
   align-items: center;
   text-decoration: underline;
 }
 
 p.alert {
   font-size: larger;
+  line-height: 1.2;
+  padding: 0.5em;
 }
 
 hr {
@@ -47,7 +48,8 @@ hr {
   color: blue;
 }
 
-#inventory-select {
+#inventory-select,
+#food-select {
   width: 70%;
   height: auto;
   font-size: 1.15rem;

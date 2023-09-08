@@ -2,11 +2,12 @@
   <div class="row">
     <div class="col-md-12">
 
-    <div class="d-flex justify-content-end mt-2 p-2">
-      <%= link_to 'New Inventory', new_inventory_path, class: "btn btn-primary text-right" %>
-    </div>
+      <h1 class="text-center mt-4">Inventories List</h1>
+      <div class="d-flex justify-content-end p-2">
+        <%= link_to 'New Inventory', new_inventory_path, class: "btn btn-primary text-right" %>
+      </div>
 
-      <% if notice && notice != "Signed in successfully."%>
+      <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
       <% end %>
 
@@ -18,8 +19,9 @@
         <p class="alert alert-info">
           No inventories added yet. Please add new inventory.
         </p>
-      <% else %>
-        <h1 class="text-center">Inventories List</h1>
+      <% end %>
+
+      <% if @inventories.any? %>
         <% @inventories.each do |inventory| %>
           <div class="row border mb-4">
             <div class="col-4 p-2 text-start">
