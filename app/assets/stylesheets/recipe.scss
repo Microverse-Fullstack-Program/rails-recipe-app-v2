@@ -134,3 +134,26 @@ a {
 .modal-wrapper {
   padding-top: 15rem;
 }
+
+.shopping_list_wrapper {
+  display: flex;
+  justify-content: space-around;
+  padding: 3rem;
+}
+
+.shopping_list_wrapper > div > h5 {
+  padding: 0.4rem;
+}
+
+.shopping_list_container {
+  padding: 0 19rem 0 19rem;
+}
+
+.table-size {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.link-active {
+  color: blue;
+}
