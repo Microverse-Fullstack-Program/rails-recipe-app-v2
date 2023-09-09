@@ -1,7 +1,7 @@
 class Recipe < ApplicationRecord
   belongs_to :User, class_name: 'User', foreign_key: 'user_id'
-  has_many :recipe_foods, dependent: :destroy
-  has_many :foods, through: :recipe_foods
+  has_many :recipe_foods, class_name: 'RecipeFood', dependent: :destroy
+  has_and_belongs_to_many :foods, join_table: :recipe_foods
 
   validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 50 }
   validates :description, presence: true, length: { minimum: 3, maximum: 500 }
