@@ -114,6 +114,13 @@ cd 'project name'
 - LinkedIn: [@Henry](https://www.linkedin.com/in/henry-odongo/)
 - Twitter: [@twitterhandle](https://twitter.com/HenryOdongo007)
 
+👤 **Enning Festus**
+
+- GitHub: [@Enning94](https://github.com/Enning94)
+- Twitter: [@nana_akyerefi](https://twitter.com/nana_akyerefi)
+- LinkedIn: [Enning Festus](https://www.linkedin.com/in/enningfestus/)
+
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
