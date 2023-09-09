@@ -36,7 +36,24 @@ class RecipesController < ApplicationController
   end
 
   def edit; end
-  def update; end
+
+  def update
+    @recipe = Recipe.find(params[:id])
+    @recipe.update recipe_params
+
+    @recipe.public = params[:public] == 'Public'
+
+    @recipe.save
+    respond_to do |format|
+      if @recipe.update(recipe_params)
+        format.html { redirect_to recipes_path, notice: 'Recipe was successfully updated.' }
+        format.json { render :show, status: :created, location: @recipe }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @recipe.errors, status: unprocessable_entity }
+      end
+    end
+  end
 
   def destroy
     @recipe = Recipe.find(params[:id])

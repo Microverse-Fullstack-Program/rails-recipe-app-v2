@@ -11,12 +11,14 @@
           <%= @recipe.preparation_time %>
           <%= @recipe.preparation_time > 1 ? 'hours' : 'hour' %> 
         </span>
-        <div class="form-check form-switch form-check-reverse">
-          <% if @recipe.public %> 
-            <input class="form-check-input" type="checkbox" checked id="flexSwitchCheckReverse" checked>
-          <% else %>
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse">
-          <% end %>
+        <div data-controller="recipe"
+            data-recipe-update-url="<%= recipe_path(@recipe) %>"
+            class="form-check form-switch form-check-reverse"
+        > 
+          <input type="checkbox" 
+              data-action="recipe#toggle" data-target = "public"
+              class="form-check-input" id="flexSwitchCheckReverse"
+                <% if @recipe.public %> checked <% end %>>
           <label class="form-check-label" for="flexSwitchCheckReverse">Public</label>
         </div>
       </div>
