@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   load_and_authorize_resource
-  include ApplicationHelper
+  include RecipesHelper
 
   def index
     notice_message
@@ -8,6 +8,7 @@ class RecipesController < ApplicationController
   end
 
   def show
+    notice_message
     @recipe = Recipe.includes(:recipe_foods).find(params[:id])
     @inventories = Inventory.all
 

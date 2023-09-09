@@ -1,7 +1,7 @@
 class InventoriesController < ApplicationController
   load_and_authorize_resource
 
-  include ApplicationHelper
+  include InventoriesHelper
 
   def index
     notice_message
@@ -9,6 +9,7 @@ class InventoriesController < ApplicationController
   end
 
   def show
+    notice_message
     @inventory = Inventory.find(params[:id])
     @foods = Food.joins(:inventory_foods).where(inventory_foods: { inventory_id: @inventory.id })
       .select('foods.*, inventory_foods.*')
