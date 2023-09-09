@@ -2,10 +2,10 @@
 require 'rails_helper'
 
 RSpec.describe Inventory, type: :model do
-  user = User.new(name: 'John Doe', email: 'local@host', password: '123456', password_confirmation: '123456' )
+  user = User.new(name: 'John Doe', email: 'local@host', password: '123456', password_confirmation: '123456')
   before { user.save }
 
-  inventory = Inventory.new(user: user, name: 'Inventory 1', description: 'Inventory 1 description')
+  inventory = Inventory.new(user:, name: 'Inventory 1', description: 'Inventory 1 description')
 
   it 'is valid with valid attributes' do
     expect(inventory).to be_valid
@@ -60,5 +60,4 @@ RSpec.describe Inventory, type: :model do
     inventory.user = nil
     expect(inventory).to_not be_valid
   end
-  
 end

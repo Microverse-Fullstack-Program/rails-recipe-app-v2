@@ -1,8 +1,8 @@
-#spec/modules/user_spec.rb
+# spec/modules/user_spec.rb
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  user = User.new(name: 'John Doe', email: 'local@host', password: '123456', password_confirmation: '123456' )
+  user = User.new(name: 'John Doe', email: 'local@host', password: '123456', password_confirmation: '123456')
   before { user.save }
 
   it 'is valid with valid attributes' do

@@ -1,3 +1,4 @@
+# spec/request/recipes_spec.rb
 require 'rails_helper'
 
 RSpec.describe 'RecipesController', type: :request do

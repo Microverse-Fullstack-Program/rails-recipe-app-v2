@@ -1,3 +1,4 @@
+# spec/request/inventories_spec.rb
 require 'rails_helper'
 
 RSpec.describe 'InventoriesController', type: :request do

@@ -1,3 +1,4 @@
+# spec/request/foods_spec.rb
 require 'rails_helper'
 
 RSpec.describe 'FoodsController', type: :request do

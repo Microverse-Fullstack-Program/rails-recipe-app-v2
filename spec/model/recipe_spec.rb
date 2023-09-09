@@ -2,10 +2,11 @@
 require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
-  user = User.new(name: 'John Doe', email: 'local@host', password: '123456', password_confirmation: '123456' )
+  user = User.new(name: 'John Doe', email: 'local@host', password: '123456', password_confirmation: '123456')
   before { user.save }
 
-  recipe = Recipe.new(User: user, name: 'Recipe 1', description: 'Recipe 1 description', cooking_time: 1, preparation_time: 1, public: true)
+  recipe = Recipe.new(User: user, name: 'Recipe 1', description: 'Recipe 1 description', cooking_time: 1,
+                      preparation_time: 1, public: true)
   before { recipe.save }
 
   it 'is valid with valid attributes' do
@@ -33,7 +34,8 @@ RSpec.describe Recipe, type: :model do
   end
 
   it 'is not valid with name that already exists' do
-    recipe2 = Recipe.create(user_id: 1, name: 'Recipe 1', description: 'Recipe 1 description', cooking_time: 1, preparation_time: 1, public: true)
+    recipe2 = Recipe.create(user_id: 1, name: 'Recipe 1', description: 'Recipe 1 description', cooking_time: 1,
+                            preparation_time: 1, public: true)
     expect(recipe2).to_not be_valid
   end
 
@@ -104,4 +106,3 @@ RSpec.describe Recipe, type: :model do
     expect(recipe).to_not be_valid
   end
 end
-  

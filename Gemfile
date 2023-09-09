@@ -80,4 +80,4 @@ gem 'cancancan', '~> 3.5'
 
 gem 'devise', '~> 4.9'
 
-gem "rspec-rails", "~> 6.0"
+gem 'rspec-rails', '~> 6.0'
