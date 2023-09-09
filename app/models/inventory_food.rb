@@ -4,5 +4,5 @@ class InventoryFood < ApplicationRecord
 
   validates :quantity, presence: true, numericality: { greater_than: 0 }
   validates :inventory_id, uniqueness: { scope: :food_id }
-  validates :food_id, presence: true
+  validates :food_id, presence: true, uniqueness: { scope: :inventory_id }
 end

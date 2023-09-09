@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   load_and_authorize_resource
+  include RecipesHelper
 
   def index
     @recipes = current_user.recipes.includes(:recipe_foods)
@@ -7,7 +8,8 @@ class RecipesController < ApplicationController
   end
 
   def show
-    Recipe.includes(:recipe_foods).find(params[:id])
+    notice_message
+    @recipe = Recipe.includes(:recipe_foods).find(params[:id])
     @inventories = Inventory.all
 
     render :show

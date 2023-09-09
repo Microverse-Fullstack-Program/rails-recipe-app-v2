@@ -1,7 +1,7 @@
 class FoodsController < ApplicationController
   before_action :set_food, only: %i[show edit update destroy]
 
-  include ApplicationHelper
+  include FoodsHelper
 
   def index
     notice_message

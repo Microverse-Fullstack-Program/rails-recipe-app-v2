@@ -3,6 +3,8 @@ class RecipeFoodsController < ApplicationController
 
   def new
     @recipe_food = RecipeFood.new
+    @recipe = Recipe.find(params[:recipe_id])
+    @foods = Food.all
   end
 
   def create
@@ -13,6 +15,8 @@ class RecipeFoodsController < ApplicationController
         format.html { redirect_to recipe_path(@recipe_food.recipe_id), notice: 'Ingredient added successfully.' }
         format.json { render :show, status: :created, location: @recipe_food }
       else
+        @recipe = Recipe.find(params[:recipe_id])
+        @foods = Food.all
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @recipe_food.errors, status: unprocessable_entity }
       end
@@ -21,6 +25,8 @@ class RecipeFoodsController < ApplicationController
 
   def edit
     @recipe_food = RecipeFood.find(params[:id])
+    @recipe = Recipe.find(@recipe_food.recipe_id)
+    @foods = Food.all
   end
 
   def update
