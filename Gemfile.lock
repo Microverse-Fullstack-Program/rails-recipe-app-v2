@@ -298,7 +298,6 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.7)
   rails-controller-testing
-  rspec-rails (~> 6.0)
   rspec-rails
   selenium-webdriver
   sprockets-rails
