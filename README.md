@@ -25,7 +25,7 @@
 
 # 📖 [Recipe App] <a name="about-project"></a>
 
-Recipe App is a web application that allows users to create and share recipes with other users. Users can create an account, login to the app and create, edit, and delete their recipes. Users can also view recipes created by other users.
+Recipe App is a web application that allows users to create and share recipes with other users. Users can create an account, log in to the app, and create, edit, and delete their recipes. Users can also view recipes created by other users.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -46,7 +46,7 @@ Recipe App is a web application that allows users to create and share recipes wi
 - Login and Signup pages
 - Use of active record models
 - Add food, recipe, inventory
-- View recipes, foods and inventory
+- View recipes, foods, and inventory
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -73,7 +73,7 @@ Clone this repository to your desired folder by following the below steps
 
 In order to run this project you need [Ruby](https://www.ruby-lang.org/en/) and [Ruby on Rails](https://rubyonrails.org/) installed on your machine.
 
-In addition you need the following tech stack
+In addition, you need the following tech stack
 - npm
 - PostgreSQL
 - rails RSpec 
@@ -84,17 +84,16 @@ In addition you need the following tech stack
 
 Install this project with:
 
-cd 'project name'
-
-"npm i" to install all dependencies
-
-"bundle install" to install all gems
-
-"rails s" to run the server
+   cd 'project name'
+   "npm i" to install all dependencies
+   "bundle install" to install all gems
+   "rails s" to run the server
 
 ### Run tests
 
 - "rspec" to run the tests
+
+  
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -114,14 +113,18 @@ cd 'project name'
 - LinkedIn: [@Henry](https://www.linkedin.com/in/henry-odongo/)
 - Twitter: [@twitterhandle](https://twitter.com/HenryOdongo007)
 
+👤 **Enning Festus**
 
+- GitHub: [@Enning94](https://github.com/Enning94)
+- Twitter: [@nana_akyerefi](https://twitter.com/nana_akyerefi)
+- LinkedIn: [Enning Festus](https://www.linkedin.com/in/enningfestus/)
+  
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
 
--   [Add better Navigation]
 -   [Improve the UX]
 -   [Add responsiviness]
 
