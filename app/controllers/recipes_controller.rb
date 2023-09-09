@@ -3,8 +3,8 @@ class RecipesController < ApplicationController
   include RecipesHelper
 
   def index
-    notice_message
     @recipes = current_user.recipes.includes(:recipe_foods)
+    flash.delete(:notice) unless request.referrer == new_recipe_url
   end
 
   def show
@@ -70,23 +70,25 @@ class RecipesController < ApplicationController
     end
   end
 
-  def shopping_list
+  def general_shopping_list
+    @recipe_id = params[:recipe_id]
+    @inventory_id = params[:inventory_id]
     @recipe = Recipe.find(params[:recipe_id])
     @inventory = Inventory.find(params[:inventory_id])
     recipe_foods = @recipe.recipe_foods.includes(:food)
     inventory_foods = @inventory.inventory_foods.includes(:food)
-
-    recipe_foods.each do |recipe_food|
-      inventory_food = inventory_foods.find_by(food_id: recipe_food.food_id)
-      if inventory_food
-        inventory_food.quantity += recipe_food.quantity
-        inventory_food.save
-      else
-        @inventory.inventory_foods.create(food_id: recipe_food.food_id, quantity: recipe_food.quantity)
-      end
+    @inventories = current_user.inventories
+    @missing_foods = []
+    @inventories.each do |inventory|
+      inventory_foods = inventory.inventory_foods.includes(:food)
+      missing_foods = inventory_foods.where.not(food_id: recipe_foods.pluck(:food_id))
+      @missing_foods.concat(missing_foods)
     end
+    @missing_foods.uniq!
 
-    redirect_to recipe_path(@recipe)
+    @total_value_needed = @missing_foods.sum do |missing_food|
+      missing_food.quantity * missing_food.food.price
+    end
   end
 
   private

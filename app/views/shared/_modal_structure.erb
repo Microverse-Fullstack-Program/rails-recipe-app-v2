@@ -9,7 +9,7 @@
       <h5 class="modal-title text-center ms-4 mt-2">Choose an inventory to use</h5>
       <div class="modal-body">
         <div class="m-2">
-            <%= form_with(url: shopping_list_path, method: :get, class: 'd-flex justify-content-between') do |f| %>
+            <%= form_with(url: general_shopping_list_path(id: @recipe.id), method: :get, class: 'd-flex justify-content-between') do |f| %>
               <%= f.hidden_field :recipe_id, value: @recipe.id %>
               <%= f.collection_select :inventory_id, @inventories, :id, :name, { prompt: '.. Select Inventory ..' }, id: 'inventory-select' %>
               <%= f.submit 'Generate', class: 'btn btn-dark' %>
