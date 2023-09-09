@@ -76,3 +76,5 @@ gem 'devise', '~> 4.9'
 gem 'bootstrap', '~> 5.1.3'
 
 gem 'cancancan', '~> 3.5'
+
+gem "rspec-rails", "~> 6.0"
