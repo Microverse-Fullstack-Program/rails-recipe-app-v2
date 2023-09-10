@@ -10,7 +10,7 @@ RSpec.describe 'foods/index', type: :feature do
   end
 
   it 'renders the Foods page' do
-    visit foods_path  
+    visit foods_path
     expect(page).to have_content('Foods List')
     expect(page).to have_content(@food1.name)
     expect(page).to have_content(@food1.measurement_unit)

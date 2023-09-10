@@ -5,14 +5,14 @@ RSpec.describe 'recipes/index.html.erb', type: :feature do
     @user = FactoryBot.create(:user)
     sign_in(@user, scope: :user)
 
-    recipe1 = Recipe.create(name: 'Recipe 1', description: 'Description 1', User: @user, cooking_time: 10,
-                            preparation_time: 10, public: true)
-    recipe2 = Recipe.create(name: 'Recipe 2', description: 'Description 2', User: @user, cooking_time: 10,
-                            preparation_time: 10, public: true)
+    Recipe.create(name: 'Recipe 1', description: 'Description 1', User: @user, cooking_time: 10,
+                  preparation_time: 10, public: true)
+    Recipe.create(name: 'Recipe 2', description: 'Description 2', User: @user, cooking_time: 10,
+                  preparation_time: 10, public: true)
   end
 
   it 'displays a list of recipes' do
-    visit recipes_path 
+    visit recipes_path
 
     expect(page).to have_content('Recipes List')
     expect(page).to have_content('Recipe 1')

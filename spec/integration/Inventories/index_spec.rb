@@ -10,7 +10,7 @@ RSpec.describe 'inventories/index', type: :feature do
   end
 
   it 'renders the Inventories page' do
-    visit inventories_path 
+    visit inventories_path
     expect(page).to have_content('Inventories List')
 
     expect(page).to have_content(@inventory1.name)
