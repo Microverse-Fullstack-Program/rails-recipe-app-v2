@@ -70,6 +70,15 @@ class RecipesController < ApplicationController
     end
   end
 
+  def toggle_public
+    @recipe = current_user.recipes.find_by(id: params[:id])
+    unless @recipe.nil?
+      @recipe.update(public: !@recipe.public)
+    end
+    redirect_to request.referrer || root_path
+  end
+  
+
   def general_shopping_list
     @recipe_id = params[:recipe_id]
     @inventory_id = params[:inventory_id]
