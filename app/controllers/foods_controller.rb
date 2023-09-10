@@ -5,7 +5,7 @@ class FoodsController < ApplicationController
 
   def index
     notice_message
-    @foods = Food.all
+    @foods = current_user.foods
   end
 
   # GET /foods/1 or /foods/1.json

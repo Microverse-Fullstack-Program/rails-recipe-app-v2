@@ -13,7 +13,7 @@
         <% @public_recipes.each do |recipe| %>
           <div class="row border mb-4">
             <div class="col-4 p-2 text-start">
-              <%= link_to recipe.name, recipe_path(recipe), class: 'nav-link mb-3 fs-4 link-dark'%>
+              <%= link_to recipe.recipes.name, recipe_path(recipe), class: 'nav-link mb-3 fs-4 link-dark'%>
               <span class="p-4 mb-3">By: <%= recipe.name %></span>
             </div>
             <div class="col p-2 text-end p-4">
