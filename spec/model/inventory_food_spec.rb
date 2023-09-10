@@ -7,7 +7,7 @@ RSpec.describe InventoryFood, type: :model do
   before :each do
     @inventory_food = InventoryFood.create(
       quantity: 10,
-      Food: food
+      food:
     )
   end
 
