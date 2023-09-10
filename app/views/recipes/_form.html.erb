@@ -14,7 +14,7 @@
 		<%= form.text_field :name,
         autofocus: true, 
         autocomplete: 'name', 
-        placeholder: 'New inventory name', 
+        placeholder: 'New recipe name', 
         class: 'form-control' 
     %>
     <% if @recipe.errors.any? %>
@@ -56,7 +56,7 @@
 		<%= form.text_area :description, rows: "5",
         autofocus: true, 
         autocomplete: 'description', 
-        placeholder: 'Description of the inventory', 
+        placeholder: 'Description of the recipe', 
         class: 'form-control' 
     %>
     <% if @recipe.errors.any? %>
